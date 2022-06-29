@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ToDo App タスク作成</title>
+@extends('layout')
+
+@section('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootflat/2.0.4/css/bootflat.min.css" integrity="sha512-3TYUrzSN1ix3NZvR8B8s5H8kXIIU0lQAsPWUE5CyFOwXKXTwS5MxfBdrVRYAr3mkYMajX90zvJpJcXIGXwcEBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-<header>
-    <nav class="my-navbar">
-        <a class="my-navbar-brand" href="/">ToDo App</a>
-    </nav>
-</header>
-<main>
+@endsection
+
+@section('content')
     <div class="container">
         <div class="row">
             <div class="col col-md-offset-3 col-md-6">
@@ -27,7 +15,7 @@
                         @if($errors->any())
                           <div class="alert alert-danger">
                             @foreach($errors->all() as $message)
-                              <p>{{ #message }}</p>
+                              <p>{{ $message }}</p>
                             @endforeach
                           </div>
                         @endif
@@ -50,8 +38,18 @@
             </div>
         </div>
     </div>
-</main>
+@endsection
 
 
-</body>
-</html>
+@section('scripts')
+    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
+    <script>
+        flatpickr(document.getElementById('due_date'),{
+            local: 'ja',
+            dateFormat: "Y/m/d",
+            minDate: new Date(),
+            allowInput: true
+        });
+    </script>
+@endsection
