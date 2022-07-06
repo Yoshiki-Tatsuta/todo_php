@@ -5,6 +5,7 @@
         locale: 'ja',
         dateFormat: "Y/m/d",
         minDate: new Date(),
-        allowInput: true
+        allowInput: true,
+        allowInvalidPreload: true
     });
 </script>

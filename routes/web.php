@@ -3,6 +3,8 @@
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FolderController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +29,10 @@ Route::get('/folders/{id}/tasks/create', [TaskController::class, 'showCreateForm
 Route::post('/folders/{id}/tasks/create', [TaskController::class, 'create']);
 Route::get('/folders/{id}/tasks/{task_id}/edit', [TaskController::class, 'showEditForm'])->name('tasks.edit');
 Route::post('/folders/{id}/tasks/{task_id}/edit', [TaskController::class, 'edit']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+//Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
