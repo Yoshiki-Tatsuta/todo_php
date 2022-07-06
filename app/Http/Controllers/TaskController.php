@@ -7,13 +7,16 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTask;
 use App\Http\Requests\EditTask;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
     public function index(int $id) 
     {
         // 全てのフォルダを取得する
-        $folders = Folder::all();
+        //$folders = Folder::all();
+        $folders = Auth::user()->folders()->get();
+
 
         // 選ばれたフォルダを取得する
         $current_folder = Folder::find($id);
@@ -30,6 +33,26 @@ class TaskController extends Controller
             'tasks' => $tasks,
         ]);
     }
+
+
+    // public function index()
+    // {
+    //     // ログインユーザーを取得する
+    //     $user = Auth::user();
+
+    //     // ログインユーザーに紐づくフォルダを一つ取得する
+    //     $folder = $user->folders()->first();
+
+    //     // まだ一つもフォルダを作っていなければホームページをレスポンスする
+    //     if (is_null($folder)) {
+    //         return view('loginhome');
+    //     }
+
+    //     // フォルダがあればそのフォルダのタスク一覧にリダイレクトする
+    //     return redirect()->route('tasks.index', [
+    //         'id' => $folder->id,
+    //     ]);
+    // }
 
 
     // GET /folders/{id}/tasks/create

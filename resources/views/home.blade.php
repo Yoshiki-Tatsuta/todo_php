@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('loginlayout')
 
 @section('content')
 <div class="container">
@@ -14,14 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('ログインしました') }}
+                    {{ __('ホーム画面') }}
                 </div>
-            </div>
-            <div class="panel-body">
-            <div class="text-center">
-              <a href="{{ route('folders.create') }}" class="btn btn-primary">
-                フォルダ作成ページへ
-              </a>
             </div>
           </div>
         </div>

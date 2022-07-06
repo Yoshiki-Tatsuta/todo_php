@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('loginlayout')
 
 @section('styles')
   @include('share.flatpickr.styles')
