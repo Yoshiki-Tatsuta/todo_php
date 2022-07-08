@@ -29,30 +29,13 @@ class TaskController extends Controller
         return view('tasks/index', [
             'folders' => $folders,
             'current_folder' => $current_folder,
-            'current_folder_id' => $current_folder->$id,
+            'current_folder_id' => $current_folder->id,
             'tasks' => $tasks,
         ]);
     }
 
 
-    // public function index()
-    // {
-    //     // ログインユーザーを取得する
-    //     $user = Auth::user();
 
-    //     // ログインユーザーに紐づくフォルダを一つ取得する
-    //     $folder = $user->folders()->first();
-
-    //     // まだ一つもフォルダを作っていなければホームページをレスポンスする
-    //     if (is_null($folder)) {
-    //         return view('loginhome');
-    //     }
-
-    //     // フォルダがあればそのフォルダのタスク一覧にリダイレクトする
-    //     return redirect()->route('tasks.index', [
-    //         'id' => $folder->id,
-    //     ]);
-    // }
 
 
     // GET /folders/{id}/tasks/create
